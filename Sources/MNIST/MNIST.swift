@@ -19,7 +19,7 @@ public class MNIST {
   }
 
   // Split data into training and test
-  public func loadData() -> (
+  public func loadData(trainRatio: Float = 0.8) -> (
     (
       Tensor<Float>,
       Tensor<Int32>
@@ -33,7 +33,7 @@ public class MNIST {
     let labels = self.labels!
 
     let N = Int(data.shape[0])
-    let split = Int(0.8 * Float(N))
+    let split = Int(trainRatio * Float(N))
     
     let trainX = data[0..<split]
     let trainY = labels[0..<split]
